@@ -24,3 +24,5 @@ func _physics_process(delta: float) -> void:
 		targetLane-=1
 	if Input.is_action_just_pressed("ui_right"):
 		targetLane+=1
+
+	move_and_slide()

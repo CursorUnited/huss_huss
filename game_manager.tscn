@@ -1,6 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://dfw5spg841ben"]
 
 [ext_resource type="Script" uid="uid://qq7jo0msx4wr" path="res://player.gd" id="1_70yv6"]
+[ext_resource type="Script" uid="uid://biyjbe4rxkxnj" path="res://game_manager.gd" id="1_o2178"]
+[ext_resource type="PackedScene" uid="uid://dip10nflyk155" path="res://standard_obstacle.tscn" id="2_o2178"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_imk4i"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -19,11 +21,9 @@ glow_enabled = true
 radius = 0.3413086
 height = 1.5463867
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_70yv6"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_smx3j"]
-
 [node name="GameManager" type="Node3D"]
+script = ExtResource("1_o2178")
+ObstacleScene = Array[PackedScene]([ExtResource("2_o2178")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_smx3j")
@@ -33,6 +33,7 @@ transform = Transform3D(-0.8535508, 0.20106076, -0.48065123, 0, 0.9225381, 0.385
 shadow_enabled = true
 
 [node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6413648, 0)
 script = ExtResource("1_70yv6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
@@ -64,11 +65,15 @@ use_collision = true
 size = Vector3(10, 0.5, 200)
 
 [node name="ObstacleContainer" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.111179)
 
-[node name="StandardObstacle" type="StaticBody3D" parent="ObstacleContainer"]
+[node name="StandardObstacle" parent="ObstacleContainer" instance=ExtResource("2_o2178")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ObstacleContainer/StandardObstacle"]
-shape = SubResource("BoxShape3D_70yv6")
+[node name="SpawnTimer" type="Timer" parent="."]
+autostart = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ObstacleContainer/StandardObstacle"]
-mesh = SubResource("BoxMesh_smx3j")
+[node name="ScoreTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
