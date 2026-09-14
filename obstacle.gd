@@ -6,3 +6,6 @@ enum ObstacleType{STANDARD, LOW, HIGH}
 
 func _process(delta: float) -> void:
 	position.z += Speed * delta
+
+	if position.z > 20:
+		queue_free()
