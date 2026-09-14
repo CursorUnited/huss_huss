@@ -7,7 +7,7 @@ var score : int = 0
 @export var MaxSpawnTime : float = 2.0
 @export var SpawnDistance : float = -20.0
 
-var lanePositions = [-2.0, 0.0, 2.0]
+var lanePositions = [-3.0, 0.0, 3.0]
 
 
 func _on_score_timer_timeout() -> void:

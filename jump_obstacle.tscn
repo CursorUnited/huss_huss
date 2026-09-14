@@ -6,7 +6,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_5c5ls"]
 size = Vector3(0.0897522, 0.2479248, 0.017578125)
 
-[node name="StaticBody3D" type="StaticBody3D"]
+[node name="StaticBody3D" type="StaticBody3D" groups=["obstacle"]]
 script = ExtResource("3_765qu")
 CurrentObstacleType = 2
 

@@ -10,7 +10,7 @@ albedo_color = Color(1, 0, 0, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_smx3j"]
 material = SubResource("StandardMaterial3D_o2178")
 
-[node name="StandardObstacle" type="StaticBody3D"]
+[node name="StandardObstacle" type="StaticBody3D" groups=["obstacle"]]
 script = ExtResource("1_d7ytq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

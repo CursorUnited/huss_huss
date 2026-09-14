@@ -6,13 +6,13 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_5c5ls"]
 size = Vector3(0.0897522, 0.13619995, 0.012664795)
 
-[node name="StaticBody3D" type="StaticBody3D"]
+[node name="StaticBody3D" type="StaticBody3D" groups=["obstacle"]]
 script = ExtResource("1_0e3t8")
 CurrentObstacleType = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(131.42294, 0, 0, 0, 14.195449, 0, 0, 0, 327.2262, -0.00010511279, 2.1345232, -0.05394727)
+transform = Transform3D(131.42294, 0, 0, 0, 14.195449, 0, 0, 0, 327.2262, -0.00010511279, 1.6828616, -0.05394727)
 shape = SubResource("BoxShape3D_5c5ls")
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("2_0e3t8")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -26.862005, 0)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -27.163893, 0)
